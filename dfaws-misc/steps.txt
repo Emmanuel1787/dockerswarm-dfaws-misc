@@ -1,0 +1,28 @@
+create/register admin key-pair
+
+check defaults on env.sh create / adjust .env
+run create-stack.sh
+run check-stack-status.sh (waits for stack creation to be complete)
+change UCPs controller port
+  through the UI and change its ELB's target and healthcheck ports
+  docker service update --add-env CONTROLLER_PORT=5443 ucp-agent
+run update-ucp-listener.sh (to change the TLS port bound for UCP to a non-standard one)
+optionally
+  run update-dns.sh (to assign CNAME aliases for the associated load balancers)
+  login into ucp and setup our external certs (run show-bootstrap-login-info.sh to obtain the elb's url)
+run ./download-ucp-client-certs.sh to download the client certs
+run eval $(./set-ucp-env.sh) (to set the environment variables needed to interact with the cluster)
+update dtr certs
+  properly place the certs to use in the certs directory
+  run ./reconfigure-dtr.sh
+  (if "ERRO[0081] Failed to check equal version: Failed version match. Replica
+  version X.X.X doesn't match bootstrap version Y.Y.Y.", adjust parameters as needed)
+  (if needed) point DTR to the correct S3 bucket
+    modify the IAM role to grant it permissions or setup credentials which have permissions
+  if running into trouble uninstalling and reinstalling the dtr is a last resort
+    run uninstall-dtr.sh as many times as needed (an interactive dialog will ask for the host to remove the replica from)
+    run install-dtr.sh supplying the private dns name for the node to install to
+    run join-dtr.sh supplying the private dns name for another node to install to and the existing replica id provided by the install command
+    
+? create the necessary DTR repositories
+login into the DTR (take care not to do it from the same terminal session that's pointing to UCP), by executing ./ucp/login.sh

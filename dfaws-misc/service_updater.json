@@ -1,0 +1,28 @@
+{
+  "id": "serviceupdater",
+  "name": "Service updater",
+  "system_role": false,
+  "operations": {
+    "Config": {
+      "Config Use": [],
+      "Config View": []
+    },
+    "Network": {
+      "Network Connect": [],
+      "Network View": []
+    },
+    "Secret": {
+      "Secret Use": [],
+      "Secret View": []
+    },
+    "Service": {
+      "Service Create": [],
+      "Service Update": [],
+      "Service View": []
+    },
+    "Volume": {
+      "Volume Create/Attach": [],
+      "Volume View": []
+    }
+  }
+}

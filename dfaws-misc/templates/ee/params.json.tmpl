@@ -1,0 +1,55 @@
+[{
+"ParameterKey": "License",
+"ParameterValue": {{ .Env.LICENSE | toJSON }}
+}, {
+"ParameterKey": "KeyName",
+"ParameterValue": "{{ getenv "KEY_NAME" "devops" }}"
+}, {
+"ParameterKey": "EnableSystemPrune",
+"ParameterValue": "{{ getenv "SYSTEM_PRUNE" "yes" }}"
+}, {
+"ParameterKey": "EnableCloudWatchLogs",
+"ParameterValue": "{{ getenv "CLOUDWATCH_LOGGING" "yes" }}"
+}, {
+"ParameterKey": "HTTPSProxy",
+"ParameterValue": "{{ getenv "HTTPS_PROXY" "" }}"
+}, {
+"ParameterKey": "HTTPProxy",
+"ParameterValue": "{{ getenv "HTTP_PROXY" "" }}"
+}, {
+"ParameterKey": "NoProxy",
+"ParameterValue": "{{ getenv "NO_PROXY" "" }}"
+}, {
+"ParameterKey": "RemoteSSH",
+"ParameterValue": "{{ getenv "REMOTE_SSH" "0.0.0.0/0" }}"
+}, {
+"ParameterKey": "DDCUsernameSet",
+"ParameterValue": "{{ getenv "ADMIN_USERNAME" "admin" }}"
+}, {
+"ParameterKey": "DDCPasswordSet",
+"ParameterValue": "{{ .Env.ADMIN_PASSWORD }}"
+}, {
+"ParameterKey": "ManagerSize",
+"ParameterValue": "{{ getenv "MANAGER_NUMBER" "3" }}"
+}, {
+"ParameterKey": "ManagerInstanceType",
+"ParameterValue": "{{ getenv "MANAGER_TIPE" "m4.large" }}"
+}, {
+"ParameterKey": "ManagerDiskType",
+"ParameterValue": "{{ getenv "MANAGER_DISK_TYPE" "gp2" }}"
+}, {
+"ParameterKey": "ManagerDiskSize",
+"ParameterValue": "{{ getenv "MANAGER_DISK_SIZE" "20" }}"
+}, {
+"ParameterKey": "ClusterSize",
+"ParameterValue": "{{ getenv "WORKER_NUMBER" "2" }}"
+}, {
+"ParameterKey": "InstanceType",
+"ParameterValue": "{{ getenv "WORKER_TYPE" "m4.large" }}"
+}, {
+"ParameterKey": "WorkerDiskType",
+"ParameterValue": "{{ getenv "WORKER_DISK_TYPE" "gp2" }}"
+}, {
+"ParameterKey": "WorkerDiskSize",
+"ParameterValue": "{{ getenv "WORKER_DISK_SIZE" "20" }}"
+}]

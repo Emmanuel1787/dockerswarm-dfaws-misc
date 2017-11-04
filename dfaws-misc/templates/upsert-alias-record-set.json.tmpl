@@ -1,0 +1,17 @@
+{
+  "Comment": "Human readable / our URL for the ELB - created programatically",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "{{ .Env.HOST_NAME }}.",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "{{ .Env.ELB_ZONE_ID }}",
+          "DNSName": "{{ .Env.ELB }}",
+          "EvaluateTargetHealth": false
+        }
+      }
+    }
+  ]
+}
